@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .profile-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .profile-info {
+            text-align: left;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .profile-info p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .profile-info p span {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .logout-btn {
+            background-color: #ff4f4f;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .logout-btn:hover {
+            background-color: #e04444;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <h1>User Profile</h1>
+
+        <div class="profile-info">
+            <p><span>Name:</span> <span id="user-name">{{ user.username }}!</span></p>
+            <p><span>Email:</span> <span id="user-email">{{ user.email }}</span></p>
+        </div>
+
+        <button class="logout-btn" id="logout-btn" onclick="myFunction()">Logout</button>
+    </div>
+    <script>
+        function myFunction() {
+            window.location.href = "{% url 'logout' %}";
+        }
+        </script>
+    {% comment %} <script>
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            let token = localStorage.getItem('authToken');
+
+            fetch('http://127.0.0.1:8000/logout/', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Token ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    localStorage.removeItem('authToken'); // Clear token from localStorage
+                    window.location.href = '/'; // Redirect to the login page or home
+                } else {
+                    console.log('Logout failed:', response.statusText);
+                }
+            })
+            .catch(error => {
+                console.log('Error logging out:', error);
+            });
+        });
+    </script> {% endcomment %}
+</body>
+</html>
+

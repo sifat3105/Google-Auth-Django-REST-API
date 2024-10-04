@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4285f4;
+            margin-bottom: 20px;
+        }
+
+        .menu {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #555;
+        }
+
+        a {
+            text-decoration: none;
+            color: #4285f4;
+            display: block;
+            margin: 10px 0;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .google-signin {
+            background-color: #4285f4;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .google-signin:hover {
+            background-color: #357ae8;
+        }
+
+        .notice {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome</h1>
+
+        <div class="menu">
+            <a href="/accounts/login/">Sign In</a>
+            <a href="/accounts/register/">Sign Up</a>
+            <a class="google-signin" href="{% url 'google_login' %}">Sign In Via Google</a>
+        </div>
+
+        <div class="notice">
+            <p>You are about to sign in using a third-party account from Google.</p>
+            <p>Continue</p>
+        </div>
+    </div>
+</body>
+</html>
